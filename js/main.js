@@ -152,10 +152,16 @@ if (contactForm) {
 
 // Dynamic portfolio loading
 const galleryGrid = document.querySelector('.gallery-grid');
-if (galleryGrid && document.querySelector('.filter-bar')) {
+const filterBar = document.querySelector('.filter-bar');
+if (galleryGrid && filterBar) {
   fetch('/api/gallery')
     .then(res => res.json())
     .then(images => {
+      // Build dynamic filter buttons from categories
+      const cats = [...new Set(images.map(img => img.category))].sort();
+      filterBar.innerHTML = '<button class="filter-btn active" data-filter="all">All</button>' +
+        cats.map(c => `<button class="filter-btn" data-filter="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</button>`).join('');
+
       galleryGrid.innerHTML = images.map(img => `
         <div class="gallery-item" data-category="${img.category}">
           <img src="/${img.file}" alt="${img.title}" loading="lazy">
@@ -193,10 +199,10 @@ if (galleryGrid && document.querySelector('.filter-bar')) {
         });
       });
 
-      // Re-bind filters
-      document.querySelectorAll('.filter-btn').forEach(btn => {
+      // Bind filter buttons
+      filterBar.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const filter = btn.dataset.filter;
           newItems.forEach(item => {

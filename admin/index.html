@@ -452,12 +452,11 @@
         </div>
         <div class="field">
           <label>Category</label>
-          <select id="uploadCategory">
-            <option value="rodeo">Rodeo</option>
-            <option value="wildlife">Wildlife</option>
-            <option value="urban">Urban</option>
-            <option value="other">Other</option>
-          </select>
+          <select id="uploadCategory"></select>
+        </div>
+        <div class="field" id="newCatField" style="display:none">
+          <label>New Category Name</label>
+          <input type="text" id="newCatInput" placeholder="e.g. landscapes">
         </div>
         <button class="btn btn-small" id="uploadBtn">Upload</button>
       </div>
@@ -566,11 +565,53 @@
       loadContacts();
     }
 
+    // --- Categories ---
+    let categories = [];
+
+    function getCategories(images) {
+      const cats = new Set(images.map(img => img.category));
+      // Always include defaults
+      ['rodeo', 'wildlife', 'urban', 'other'].forEach(c => cats.add(c));
+      return Array.from(cats).sort();
+    }
+
+    function buildCategoryOptions(selected, includeNew) {
+      let opts = categories.map(c =>
+        `<option value="${c}" ${c === selected ? 'selected' : ''}>${c.charAt(0).toUpperCase() + c.slice(1)}</option>`
+      ).join('');
+      if (includeNew) {
+        opts += '<option value="__new__">+ New Category...</option>';
+      }
+      return opts;
+    }
+
+    function refreshUploadCategorySelect() {
+      const sel = document.getElementById('uploadCategory');
+      sel.innerHTML = buildCategoryOptions('', true);
+      sel.addEventListener('change', () => {
+        document.getElementById('newCatField').style.display =
+          sel.value === '__new__' ? 'block' : 'none';
+      });
+    }
+
+    function getUploadCategory() {
+      const sel = document.getElementById('uploadCategory');
+      if (sel.value === '__new__') {
+        const val = document.getElementById('newCatInput').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
+        if (!val) { alert('Enter a category name'); return null; }
+        return val;
+      }
+      return sel.value;
+    }
+
     // --- Gallery ---
     async function loadGallery() {
       const res = await fetch(`${API}/api/admin/gallery`);
       const images = await res.json();
       const grid = document.getElementById('galleryGrid');
+
+      categories = getCategories(images);
+      refreshUploadCategorySelect();
 
       grid.innerHTML = images.map(img => `
         <div class="gallery-card" data-id="${img.id}">
@@ -581,12 +622,12 @@
             </div>
             <div class="editable-row">
               <select data-field="category" data-id="${img.id}">
-                <option value="rodeo" ${img.category === 'rodeo' ? 'selected' : ''}>Rodeo</option>
-                <option value="wildlife" ${img.category === 'wildlife' ? 'selected' : ''}>Wildlife</option>
-                <option value="urban" ${img.category === 'urban' ? 'selected' : ''}>Urban</option>
-                <option value="other" ${img.category === 'other' ? 'selected' : ''}>Other</option>
+                ${buildCategoryOptions(img.category, true)}
               </select>
               <button class="btn btn-small btn-outline" onclick="saveImage(${img.id})">Save</button>
+            </div>
+            <div class="editable-row new-cat-row" data-id="${img.id}" style="display:none">
+              <input type="text" data-field="newcat" placeholder="New category name">
             </div>
             <div class="gallery-card-actions">
               <button class="btn-danger btn" onclick="deleteImage(${img.id})">Delete</button>
@@ -594,12 +635,27 @@
           </div>
         </div>
       `).join('');
+
+      // Toggle new category input on each card
+      grid.querySelectorAll('select[data-field="category"]').forEach(sel => {
+        sel.addEventListener('change', () => {
+          const id = sel.dataset.id;
+          const row = grid.querySelector(`.new-cat-row[data-id="${id}"]`);
+          row.style.display = sel.value === '__new__' ? 'flex' : 'none';
+        });
+      });
     }
 
     async function saveImage(id) {
       const card = document.querySelector(`.gallery-card[data-id="${id}"]`);
       const title = card.querySelector('input[data-field="title"]').value;
-      const category = card.querySelector('select[data-field="category"]').value;
+      let category = card.querySelector('select[data-field="category"]').value;
+
+      if (category === '__new__') {
+        const newCatInput = card.querySelector('input[data-field="newcat"]');
+        category = newCatInput.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
+        if (!category) { alert('Enter a category name'); return; }
+      }
 
       await fetch(`${API}/api/admin/gallery/${id}`, {
         method: 'PUT',
@@ -620,9 +676,11 @@
     document.getElementById('uploadBtn').addEventListener('click', async () => {
       const fileInput = document.getElementById('uploadFile');
       const title = document.getElementById('uploadTitle').value;
-      const category = document.getElementById('uploadCategory').value;
 
       if (!fileInput.files[0]) return alert('Choose a file first');
+
+      const category = getUploadCategory();
+      if (!category) return;
 
       const formData = new FormData();
       formData.append('image', fileInput.files[0]);
