@@ -27,10 +27,20 @@ app.use(session({
 }));
 
 // Serve static files
-app.use(express.static(__dirname, {
-  index: 'index.html',
-  extensions: ['html']
-}));
+app.use(express.static(path.join(__dirname), { index: 'index.html' }));
+
+// HTML page routes
+const pages = ['index', 'portfolio', 'about', 'contact'];
+pages.forEach(page => {
+  app.get(`/${page === 'index' ? '' : page}`, (req, res, next) => {
+    const filePath = path.join(__dirname, `${page}.html`);
+    if (fs.existsSync(filePath)) {
+      res.sendFile(filePath);
+    } else {
+      next();
+    }
+  });
+});
 
 // --- Helpers ---
 function readJSON(file) {
