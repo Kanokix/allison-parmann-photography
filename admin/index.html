@@ -376,6 +376,19 @@
       margin-top: 0.75rem;
     }
 
+    .featured-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    .featured-toggle input { cursor: pointer; accent-color: var(--accent); }
+    .featured-toggle.is-featured { color: var(--accent); }
+
     /* === RESPONSIVE === */
     @media (max-width: 700px) {
       .topbar { padding: 1rem; }
@@ -629,6 +642,10 @@
             <div class="editable-row new-cat-row" data-id="${img.id}" style="display:none">
               <input type="text" data-field="newcat" placeholder="New category name">
             </div>
+            <label class="featured-toggle ${img.featured ? 'is-featured' : ''}">
+              <input type="checkbox" ${img.featured ? 'checked' : ''} onchange="toggleFeatured(${img.id}, this.checked)">
+              Featured on Home
+            </label>
             <div class="gallery-card-actions">
               <button class="btn-danger btn" onclick="deleteImage(${img.id})">Delete</button>
             </div>
@@ -669,6 +686,15 @@
     async function deleteImage(id) {
       if (!confirm('Delete this image permanently?')) return;
       await fetch(`${API}/api/admin/gallery/${id}`, { method: 'DELETE' });
+      loadGallery();
+    }
+
+    async function toggleFeatured(id, featured) {
+      await fetch(`${API}/api/admin/gallery/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ featured })
+      });
       loadGallery();
     }
 

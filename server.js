@@ -192,7 +192,8 @@ app.post('/api/admin/gallery/upload', requireAuth, upload.single('image'), (req,
     id: maxId + 1,
     file: `images/${category}/${req.file.filename}`,
     title,
-    category
+    category,
+    featured: false
   };
 
   gallery.push(newImage);
@@ -210,6 +211,7 @@ app.put('/api/admin/gallery/:id', requireAuth, (req, res) => {
   const oldFile = image.file;
 
   if (req.body.title) image.title = req.body.title;
+  if (typeof req.body.featured === 'boolean') image.featured = req.body.featured;
   if (req.body.category && req.body.category !== oldCategory) {
     // Move file to new category folder
     const newDir = path.join(IMAGES_DIR, req.body.category);

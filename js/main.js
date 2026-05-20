@@ -150,6 +150,29 @@ if (contactForm) {
   });
 }
 
+// Dynamic featured section on home page
+const featuredGrid = document.querySelector('.featured-grid');
+if (featuredGrid) {
+  fetch('/api/gallery')
+    .then(res => res.json())
+    .then(images => {
+      const featured = images.filter(img => img.featured);
+      if (featured.length === 0) return; // keep static HTML as fallback
+      featuredGrid.innerHTML = featured.map(img => `
+        <div class="featured-item">
+          <img src="/${img.file}" alt="${img.title}" loading="lazy">
+          <div class="overlay">
+            <div class="img-info">
+              <div class="img-category">${img.category.charAt(0).toUpperCase() + img.category.slice(1)}</div>
+              <div class="img-title">${img.title}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    })
+    .catch(() => {}); // fallback: keep static HTML
+}
+
 // Dynamic portfolio loading
 const galleryGrid = document.querySelector('.gallery-grid');
 const filterBar = document.querySelector('.filter-bar');
