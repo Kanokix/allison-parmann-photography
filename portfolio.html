@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Allison Parmann Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Allison Parmann <span>Photography</span></a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Portfolio -->
+  <section class="section portfolio-hero">
+    <div class="section-header reveal">
+      <h2>Portfolio</h2>
+      <div class="line"></div>
+      <p>A curated collection across rodeo, wildlife, urban, and more</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="rodeo">Rodeo</button>
+      <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+      <button class="filter-btn" data-filter="urban">Urban</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery-grid">
+
+      <!-- RODEO -->
+      <div class="gallery-item" data-category="rodeo">
+        <img src="images/rodeo/barrel-racing.jpg" alt="Barrel racing action shot" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Barrel Racing</div><div class="img-category">Rodeo</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="rodeo">
+        <img src="images/rodeo/rider-composed.jpg" alt="Rider on horseback, composed" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Composed Rider</div><div class="img-category">Rodeo</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="rodeo">
+        <img src="images/rodeo/sliding-stop.jpg" alt="Horse sliding stop with dust" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Sliding Stop</div><div class="img-category">Rodeo</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="rodeo">
+        <img src="images/rodeo/charging-forward.jpg" alt="Rider charging forward on horseback" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Charging Forward</div><div class="img-category">Rodeo</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="rodeo">
+        <img src="images/rodeo/saddle-detail.jpg" alt="Horse and saddle detail in black and white" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Saddle Detail</div><div class="img-category">Rodeo</div></div>
+        </div>
+      </div>
+
+      <!-- WILDLIFE -->
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/jellyfish.jpg" alt="Pacific sea nettle jellyfish" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Pacific Sea Nettle</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/lemur.jpg" alt="Black and white ruffed lemur" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Ruffed Lemur</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/shark-kelp.jpg" alt="Shark swimming through kelp forest" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Kelp Forest Shark</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/leopard-shark.jpg" alt="Leopard shark among kelp and fish" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Leopard Shark</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/wallaby.jpg" alt="Wallaby portrait in black and white" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Wallaby Portrait</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/seagull-sunset.jpg" alt="Seagull silhouette at sunset" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Golden Hour Seagull</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/cormorants.jpg" alt="Cormorants on ocean rocks" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Coastal Cormorants</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/moth-macro.jpg" alt="Moth macro photography" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Moth Macro</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/fish-feeding.jpg" alt="Fish feeding frenzy underwater" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Feeding Frenzy</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/sardine-blur.jpg" alt="Sardines in artistic motion blur" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Sardine Current</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/bird-rock-sunset.jpg" alt="Bird perched on rock at sunset" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Sunset Perch</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/sardine-school.jpg" alt="School of sardines in deep blue" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Sardine School</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="wildlife">
+        <img src="images/wildlife/jackrabbit.jpg" alt="Desert jackrabbit in black and white" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Desert Jackrabbit</div><div class="img-category">Wildlife</div></div>
+        </div>
+      </div>
+
+      <!-- URBAN -->
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/grand-central-entrance.jpg" alt="Grand Central subway entrance at night" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Grand Central</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/cyclist-steam.jpg" alt="Cyclist riding through NYC steam at night" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Steam Rider</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/subway-motion.jpg" alt="Subway train in motion blur" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">In Motion</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/nyc-night-street.jpg" alt="NYC E 35th Street at night" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">E 35th Street</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/conductor.jpg" alt="Train conductor at Metro-North" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">The Conductor</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/metro-north-car.jpg" alt="Metro-North Railroad car" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Metro-North</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/one-way-sign.jpg" alt="One Way sign at night in NYC" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">One Way</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/light-trails.jpg" alt="Light trails at intersection" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Light Trails</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/ticket-windows.jpg" alt="MTA Metro-North ticket windows" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Ticket Windows</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/train-platform.jpg" alt="Commuter train at platform" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Platform</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/train-rider.jpg" alt="Person hanging from Metro-North train" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">The Commuter</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/street-steam.jpg" alt="NYC street with steam at night" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Street Steam</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/cyclist-night.jpg" alt="Cyclist at night in NYC" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Night Cyclist</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/metro-north-side.jpg" alt="Metro-North train side view" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">6203</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban/train-tracks.jpg" alt="Train at platform with tracks" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Down the Line</div><div class="img-category">Urban</div></div>
+        </div>
+      </div>
+
+      <!-- OTHER -->
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/stormy-waves.jpg" alt="Stormy ocean waves and rocks" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Stormy Waves</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/ocean-rocks.jpg" alt="Ocean waves crashing on rocks" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Ocean Rocks</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/beach-couple.jpg" alt="Couple on beach at sunset" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Beach Moment</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/couple-kiss-beach.jpg" alt="Couple kissing on the beach" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Shoreline Kiss</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/mt-rainier.jpg" alt="Mount Rainier landscape" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Mount Rainier</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/bathtub-portrait.jpg" alt="Artistic bathtub portrait" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Through Glass</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/bathtub-bw.jpg" alt="Artistic black and white portrait" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Submerged</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/dream-collage.jpg" alt="Digital art collage" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Between Stars &amp; Shorelines</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="other">
+        <img src="images/other/jackrabbit-2.jpg" alt="Desert jackrabbit" loading="lazy">
+        <div class="img-overlay">
+          <div><div class="img-title">Desert Jackrabbit II</div><div class="img-category">Other</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" aria-label="Next">&#8250;</button>
+    <img src="" alt="Lightbox image">
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Allison Parmann <span>Photography</span></div>
+
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <p class="copyright">&copy; 2025 Allison Parmann Photography. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
